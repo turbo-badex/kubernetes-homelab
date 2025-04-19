@@ -37,6 +37,7 @@ To keep things simple yet powerful, my homelab runs on the following hardware:
 To prevent the K3s cluster’s LoadBalancer services from ever colliding with DHCP leases on my home network, i first carved out a “static” slice of the LAN’s /24. The router’s DHCP pool was narrowed from 10.0.0.2‑10.0.0.253 to 10.0.0.2‑10.0.0.200, leaving 10.0.0.240‑10.0.0.250 permanently unassigned by DHCP. I then declared that exact block in our IPAddressPool and L2Advertisement resources inside metallb-system, ensuring MetalLB is the only service that can claim those addresses. Whenever a Kubernetes Service is patched to type: LoadBalancer, MetalLB now draws from this reserved pool, advertises the chosen IP via ARP, and the router never tries to hand the same address to a new device—guaranteeing zero IP‑conflict between the cluster and anything else on the network.
 
 🔧 Tools and Applications
+
 The homelab runs a variety of applications, deployed using Kubernetes and managed declaratively through GitOps. Here’s an overview of the setup:
 
 Kubernetes: The backbone for workload orchestration, ensuring high availability and scalability.
@@ -45,7 +46,9 @@ Longhorn: Distributed storage solution for resilient and scalable data managemen
 Prometheus and Grafana: Monitoring and observability for tracking cluster performance and health.
 Kube-Prometheus-Stack: Comprehensive monitoring and alerting stack with Prometheus, Grafana, and Alertmanager.
 
+
 📂 What’s in This Repository?
+
 
 This repository is structured to organize and simplify the management of my Kubernetes homelab:
 
