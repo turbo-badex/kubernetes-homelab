@@ -1,15 +1,17 @@
+## Kubernetes Homelab
+
 Welcome to my Kubernetes Homelab repository! This is where I document my journey about cloud-native technologies and self-hosting applications. This homelab is more than a playground—it's a platform where I explore ideas, automate workflows, and solve complex challenges while having fun.
 
-As a DevOps Enthusiast, I'm really curious about Kubernetes. This homelab represents my passion for learning and experimenting with technology, focusing on scalability, backup strategies, and operational simplicity.
+As a DevOps Enthusiast, I'm curious about Kubernetes and creating pipelines. This homelab represents my passion for learning and experimenting with technology, focusing on scalability, backup strategies, and operational simplicity.
 
-🚀 Why a Homelab?
+## 🚀 Why a Homelab?
 
 The purpose of this homelab is:
 
 Learning by Doing: By self-hosting, I tackle the complexities of deploying and managing real-world applications.
 All-in-One Environment: This Kubernetes cluster manages all the applications of my home setup, serving as a single, integrated environment for testing, developing, and automating cloud-native workflows.
 
-🖥️ My Hardware
+## 🖥️ My Hardware
 
 To keep things simple yet powerful, my homelab runs on the following hardware:
 
@@ -36,7 +38,7 @@ To keep things simple yet powerful, my homelab runs on the following hardware:
 
 To prevent the K3s cluster’s LoadBalancer services from ever colliding with DHCP leases on my home network, i first carved out a “static” slice of the LAN’s /24. The router’s DHCP pool was narrowed from 10.0.0.2‑10.0.0.253 to 10.0.0.2‑10.0.0.200, leaving 10.0.0.240‑10.0.0.250 permanently unassigned by DHCP. I then declared that exact block in our IPAddressPool and L2Advertisement resources inside metallb-system, ensuring MetalLB is the only service that can claim those addresses. Whenever a Kubernetes Service is patched to type: LoadBalancer, MetalLB now draws from this reserved pool, advertises the chosen IP via ARP, and the router never tries to hand the same address to a new device—guaranteeing zero IP‑conflict between the cluster and anything else on the network.
 
-🔧 Tools and Applications
+## 🔧 Tools and Applications
 
 The homelab runs a variety of applications, deployed using Kubernetes and managed declaratively through GitOps. Here’s an overview of the setup:
 
@@ -47,8 +49,7 @@ Prometheus and Grafana: Monitoring and observability for tracking cluster perfor
 Kube-Prometheus-Stack: Comprehensive monitoring and alerting stack with Prometheus, Grafana, and Alertmanager.
 
 
-📂 What’s in This Repository?
-
+## 📂 What’s in This Repository?
 
 This repository is structured to organize and simplify the management of my Kubernetes homelab:
 
@@ -56,7 +57,8 @@ apps/: Contains deployment configurations (Helm charts or raw manifests) for eac
 argocd-apps/: Includes ArgoCD-specific application manifests and GitOps configurations for managing deployments declaratively.
 cluster/: Defines Kubernetes cluster-wide configurations, such as networking, storage, and infrastructure setup.
 
-📈 My Goals
+## 📈 My Goals
+
 Deepen Kubernetes Knowledge: Dive deep into advanced Kubernetes concepts, such as networking, GitOps or federation.
 Enhance Resilience: Design a self-hosted environment with reliable backups and minimal downtime.
 Share Knowledge: Document my progress and learnings to help others interested in setting up their own homelab.
