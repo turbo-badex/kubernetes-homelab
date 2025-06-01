@@ -1,0 +1,28 @@
+- name: Teardown K3s from all nodes
+  hosts: all
+  become: true
+  tasks:
+    - name: Uninstall K3s
+      shell: /usr/local/bin/k3s-uninstall.sh
+      args:
+        warn: false
+      ignore_errors: true
+
+    - name: Uninstall K3s Agent (for worker nodes)
+      shell: /usr/local/bin/k3s-agent-uninstall.sh
+      args:
+        warn: false
+      ignore_errors: true
+
+    - name: Remove leftover files
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /etc/rancher
+        - /var/lib/rancher
+        - /etc/systemd/system/k3s.service
+        - /etc/systemd/system/k3s-agent.service
+        - /var/lib/kubelet
+        - /etc/kubernetes
+      ignore_errors: true
