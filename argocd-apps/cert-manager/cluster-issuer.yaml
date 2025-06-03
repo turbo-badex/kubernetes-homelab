@@ -4,7 +4,7 @@ metadata:
   name: letsencrypt-namecom
 spec:
   acme:
-    email: taiwo@badex.tv          # ✅ Replace this
+    email: taiwo@badex.tv          
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-namecom
@@ -14,7 +14,7 @@ spec:
           groupName: acme.name.com
           solverName: namedotcom
           config:
-            username: BadexTV              # ✅ Use your actual domain name host username
+            username: BadexTV              
             apitokensecret:
               name: namedotcom-credentials
               key: api-token
