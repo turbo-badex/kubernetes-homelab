@@ -8,9 +8,9 @@ spec:
   source:
     repoURL: https://github.com/turbo-badex/kubernetes-homelab.git
     targetRevision: HEAD
-    path: argocd-apps/metallb  
+    path: argocd-apps/metallb
     kustomize:
-      enableHelm: true       
+      enableHelm: true        
   destination:
     server: https://kubernetes.default.svc
     namespace: metallb-system
