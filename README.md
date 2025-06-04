@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-# ⚙️ K3s Homelab Automation with Ansible
+# ⚙️ K3s Homelab Automation
 
-This project automates the setup and teardown of a lightweight Kubernetes (K3s) cluster across virtual machines provisioned in a homelab — specifically tailored for Proxmox + cloud-init environments.
+This project automates the setup and teardown of a lightweight Kubernetes (K3s) cluster across virtual machines provisioned in a homelab, specifically tailored for Proxmox + cloud-init environments.
 
 ## 📌 Features
 =======
