@@ -16,6 +16,9 @@ spec:
           defaultDataPath: /var/lib/longhorn
           backupTarget: ""
 
+        preUpgradeChecker:
+          jobEnabled: false
+
         ingress:
           enabled: true
           annotations:
