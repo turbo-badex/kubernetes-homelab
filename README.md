@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-# ⚙️ K3s Homelab Automation with Ansible
+# ⚙️ K3s Homelab Automation
 
-This project automates the setup and teardown of a lightweight Kubernetes (K3s) cluster across virtual machines provisioned in a homelab — specifically tailored for Proxmox + cloud-init environments.
+This project automates the setup and teardown of a lightweight Kubernetes (K3s) cluster across virtual machines provisioned in a homelab, specifically tailored for Proxmox + cloud-init environments.
 
 ## 📌 Features
 =======
@@ -9,10 +8,9 @@ This project automates the setup and teardown of a lightweight Kubernetes (K3s) 
 
 Welcome to my Kubernetes Homelab repository! This is where I document my journey about cloud-native technologies and self-hosting applications. This homelab is more than a playground—it's a platform where I explore ideas, automate workflows, and solve complex challenges while having fun.
 
-As a DevOps Enthusiast, I'm curious about Kubernetes and creating pipelines. This homelab represents my passion for learning and experimenting with technology, focusing on scalability, backup strategies, and operational simplicity.
+As a DevOps Enthusiast, I'm curious about Kubernetes and creating pipelines. This homelab represents my passion for learning and experimenting with technology, with a focus on scalability, backup strategies, and operational simplicity.
 
 ## 🚀 Why a Homelab?
->>>>>>> 05981fb8bb4056295203ee068d349f2db0b759b5
 
 - Fully automated K3s installation using Ansible
 - One master node and multiple workers
@@ -31,11 +29,11 @@ k3s-ansible/
 ## ✅ Requirements
 =======
 ## 🖥️ My Hardware
->>>>>>> 05981fb8bb4056295203ee068d349f2db0b759b5
+Beelink Ai Mini PC EQR6 6900HX, synology NAS.
 
 - Proxmox VMs with static IPs and cloud-init SSH access
 - SSH public key added to VMs (via cloud-init)
-- Ansible installed on your local machine (e.g. via `brew install ansible` on macOS)
+- Ansible installed on your local machine 
 - Python 3 available on the target VMs
 
 ## 🚀 Usage
