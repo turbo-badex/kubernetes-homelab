@@ -1,0 +1,13 @@
+defaultSettings:
+  defaultReplicaCount: 2
+  defaultDataPath: /var/lib/longhorn
+  backupTarget: ""
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  host: longhorn.badex.dev
+  tls: true
+  tlsSecret: longhorn-tls
