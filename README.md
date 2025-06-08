@@ -1,14 +1,8 @@
-# ⚙️ K3s Homelab Automation
-
-This project automates the setup and teardown of a lightweight Kubernetes (K3s) cluster across virtual machines provisioned in a homelab, specifically tailored for Proxmox + cloud-init environments.
-
-## 📌 Features
-=======
 ## Kubernetes Homelab
 
 Welcome to my Kubernetes Homelab repository! This is where I document my journey about cloud-native technologies and self-hosting applications. This homelab is more than a playground—it's a platform where I explore ideas, automate workflows, and solve complex challenges while having fun.
 
-As a DevOps Enthusiast, I'm curious about Kubernetes and creating pipelines. This homelab represents my passion for learning and experimenting with technology, with a focus on scalability, backup strategies, and operational simplicity.
+As a DevOps Enthusiast, I'm curious about Kubernetes and creating pipelines. This homelab represents my passion for learning and experimenting with technology, with a focus on scalability, backup strategies, and operational simplicity. This project automates the setup and teardown of a lightweight Kubernetes (K3s) cluster across virtual machines provisioned in a homelab, specifically tailored for Proxmox + cloud-init environments.
 
 ## 🚀 Why a Homelab?
 
