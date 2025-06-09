@@ -1,0 +1,9 @@
+hostname: rancher.badex.dev
+replicas: 1
+ingress:
+  tls:
+    source: letsEncrypt
+letsEncrypt:
+  email: taiwo@badex.tv
+  ingress:
+    class: nginx
