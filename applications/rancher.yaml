@@ -6,17 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/turbo-badex/kubernetes-homelab
-    targetRevision: HEAD
-    path: argocd-apps/rancher
-    directory:
-      recurse: true
+    repoURL: https://releases.rancher.com/server-charts/latest
+    chart: rancher
+    targetRevision: 2.11.1
     helm:
-      chart: rancher
-      repoURL: https://releases.rancher.com/server-charts/latest
-      targetRevision: 2.11.1
       valueFiles:
-        - values.yaml
+        - ../../argocd-apps/rancher/values.yaml  # adjust path if needed
   destination:
     server: https://kubernetes.default.svc
     namespace: cattle-system
