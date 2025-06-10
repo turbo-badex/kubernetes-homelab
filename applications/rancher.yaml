@@ -10,8 +10,13 @@ spec:
     chart: rancher
     targetRevision: 2.11.1
     helm:
-      valueFiles:
-        - argocd-apps/rancher/values.yaml  # adjust path if needed
+      values: |
+        hostname: rancher.badex.dev
+        replicas: 1
+        ingress:
+          tls:
+            source: secret
+            secretName: rancher-tls
   destination:
     server: https://kubernetes.default.svc
     namespace: cattle-system
