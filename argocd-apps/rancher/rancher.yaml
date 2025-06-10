@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://releases.rancher.com/server-charts/latest
+    repoURL: https://github.com/turbo-badex/kubernetes-homelab.git
     chart: rancher
     targetRevision: 2.11.1
     helm:
@@ -17,9 +17,6 @@ spec:
           tls:
             source: secret
             secretName: rancher-tls
-      parameters:
-        - name: includeCRDs
-          value: "true"
   destination:
     server: https://kubernetes.default.svc
     namespace: cattle-system
