@@ -6,9 +6,20 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/turbo-badex/kubernetes-homelab.git
-    targetRevision: HEAD
-    path: argocd-apps/rancher
+    repoURL: https://releases.rancher.com/server-charts/latest
+    chart: rancher
+    targetRevision: 2.11.1
+    helm:
+      values: |
+        hostname: rancher.badex.dev
+        replicas: 1
+        ingress:
+          tls:
+            source: secret
+            secretName: rancher-tls
+      parameters:
+        - name: includeCRDs
+          value: "true"
   destination:
     server: https://kubernetes.default.svc
     namespace: cattle-system
