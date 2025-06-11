@@ -4,15 +4,13 @@
   tasks:
     - name: Uninstall K3s
       shell: /usr/local/bin/k3s-uninstall.sh
-      args:
-        warn: false
       ignore_errors: true
+      register: uninstall_k3s
 
     - name: Uninstall K3s Agent (for worker nodes)
       shell: /usr/local/bin/k3s-agent-uninstall.sh
-      args:
-        warn: false
       ignore_errors: true
+      register: uninstall_k3s_agent
 
     - name: Remove leftover files
       file:
@@ -25,4 +23,20 @@
         - /etc/systemd/system/k3s-agent.service
         - /var/lib/kubelet
         - /etc/kubernetes
+        - /var/lib/kube-router
+        - /etc/cni
+        - /opt/cni
+        - /run/flannel
+        - /var/lib/cni
+        - /var/lib/etcd
+        - /etc/cert-manager         # Optional cert-manager cleanup
+        - /var/lib/cert-manager  
       ignore_errors: true
+      register: remove_files
+
+    - name: Reboot the node (only if teardown ran successfully)
+      reboot:
+        reboot_timeout: 600
+      when:
+        - uninstall_k3s.rc == 0 or uninstall_k3s_agent.rc == 0
+        - remove_files is succeeded

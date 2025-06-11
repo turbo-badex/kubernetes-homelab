@@ -16,13 +16,8 @@ spec:
         ingress:
           tls:
             source: secret
-            secretName: rancher-tls
+            secretName: tls-rancher
   destination:
     server: https://kubernetes.default.svc
     namespace: cattle-system
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+  syncPolicy: {}

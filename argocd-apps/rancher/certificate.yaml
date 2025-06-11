@@ -4,10 +4,17 @@ metadata:
   name: rancher-cert
   namespace: cattle-system
 spec:
-  secretName: rancher-tls
+  secretName: tls-rancher
   issuerRef:
     name: letsencrypt-namecom
     kind: ClusterIssuer
   commonName: rancher.badex.dev
   dnsNames:
     - rancher.badex.dev
+  privateKey:
+    rotationPolicy: Always
+  usages:
+    - digital signature
+    - key encipherment
+  additionalOutputFormats:
+    - type: CombinedPEM
