@@ -9,7 +9,7 @@ image:
 
 mcImage:
   repository: quay.io/minio/mc
-  tag: RELEASE.2024-11-21T17-21-54Z
+  tag: RELEASE.2023-09-23T03-08-40Z
 
 rootUser: ""
 rootPassword: ""
