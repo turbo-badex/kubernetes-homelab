@@ -1,7 +1,8 @@
 defaultSettings:
   defaultReplicaCount: 2
-  defaultDataPath: "/var/lib/longhorn"
-  defaultLonghornStaticStorageClass: "longhorn"
 
+preUpgradeChecker:
+  enabled: false
+  
 ingress:
   enabled: false  # We're managing ingress separately
