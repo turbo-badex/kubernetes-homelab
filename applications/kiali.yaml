@@ -10,32 +10,39 @@ spec:
     targetRevision: v1.73.0
     chart: kiali-server
     helm:
-      values: |
-        auth:
-          strategy: anonymous
+      parameters:
+        - name: auth.strategy
+          value: anonymous
 
-        deployment:
-          accessible_namespaces: ["**"]
-          namespace: istio-system
+        - name: deployment.accessible_namespaces
+          value: '**'
+        - name: deployment.namespace
+          value: istio-system
 
-        ingress:
-          enabled: true
-          class_name: nginx
-          annotations:
-            cert-manager.io/cluster-issuer: letsencrypt-namecom
-            nginx.ingress.kubernetes.io/ssl-redirect: "true"
-            nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-          hosts:
-            - name: kiali.badex.dev
-              path: /
-              tls: true
-              tlsSecret: kiali-tls
+        - name: ingress.enabled
+          value: 'true'
+        - name: ingress.class_name
+          value: nginx
+        - name: ingress.annotations.cert-manager\.io/cluster-issuer
+          value: letsencrypt-namecom
+        - name: ingress.annotations.nginx\.ingress\.kubernetes\.io/ssl-redirect
+          value: 'true'
+        - name: ingress.annotations.nginx\.ingress\.kubernetes\.io/force-ssl-redirect
+          value: 'true'
+        - name: ingress.hosts[0].name
+          value: kiali.badex.dev
+        - name: ingress.hosts[0].path
+          value: /
+        - name: ingress.hosts[0].tls
+          value: 'true'
+        - name: ingress.hosts[0].tlsSecret
+          value: kiali-tls
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system
   syncPolicy:
     automated:
-      selfHeal: true
       prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
