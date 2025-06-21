@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kiali
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://kiali.org/helm-charts
+    targetRevision: v1.73.0
+    chart: kiali-server
+    helm:
+      values: |
+        auth:
+          strategy: anonymous  # Or 'login' if you want username/password auth
+
+        deployment:
+          accessible_namespaces: ["**"]
+          namespace: istio-system
+
+        ingress:
+          enabled: true
+          class_name: nginx
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-namecom
+            nginx.ingress.kubernetes.io/ssl-redirect: "true"
+            nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+          hosts:
+            - name: kiali.badex.dev
+              path: /
+              tls: true
+              tlsSecret: kiali-tls
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
